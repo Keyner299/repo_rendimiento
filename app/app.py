@@ -1,6 +1,7 @@
 from flask import Flask
 from dotenv import load_dotenv
-from routes import universidad_bp
+from extensiones import ma, db
+from routes.universidad_route import universidad_bp
 
 
 
