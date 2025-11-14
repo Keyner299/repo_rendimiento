@@ -1,6 +1,6 @@
 from marshmallow import fields
-from extensiones import ma
-from modelos import Universidad
+from app.extensiones import ma
+from models.universidad_model import Universidad
 
 class UniversidadSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
