@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
 from schemas.carrera_schema import CarerraSchema
-from app.extensiones import db
+from extensiones import db
 from models.carrera_model import Carrera
 
-Carrera_bp=Blueprint(
+carrera_bp=Blueprint(
     'carrera_routes',
     __name__
 )
@@ -14,7 +14,7 @@ sCarreras = CarerraSchema(many=True)
 
 #endpoints
 
-@Carrera_bp.route('/', methods=['POST'])
+@carrera_bp.route('/', methods=['POST'])
 def crear_carrera():
     
     if not request.json:
@@ -30,9 +30,9 @@ def crear_carrera():
 
     except Exception as e:
         db.session.rollback()
-        return jsonify({"error":f"No se pudo agregar la carrera {e}"}),500
+        return jsonify({"error":f"No se pudo agregar la carrera: {e}"}),500
 
-@Carrera_bp.route('/', methods=['GET'])
+@carrera_bp.route('/', methods=['GET'])
 def ver_carreras():
     
     carreras= Carrera.query.all()
@@ -42,7 +42,7 @@ def ver_carreras():
     return jsonify({"results":lista}),200
 
 
-@Carrera_bp.route('/<carrera_id>', methods=['PUT'])
+@carrera_bp.route('/<carrera_id>', methods=['PUT'])
 def modificar_carreras(carrera_id):
 
     data = request.get_json()
@@ -56,6 +56,7 @@ def modificar_carreras(carrera_id):
         carrera_a_modificar = db.session.get(Carrera, carrera_id)
 
         carrera_a_modificar.carrera = data.get('carrera', carrera_a_modificar.carrera)
+        carrera_a_modificar.universidad_id = data.get('universidad_id', carrera_a_modificar.universidad_id) 
         carrera_a_modificar.duracion_anios = data.get('duracion_anios', carrera_a_modificar.duracion_anios)
         carrera_a_modificar.observaciones = data.get('observaciones', carrera_a_modificar.observaciones)
 
@@ -69,6 +70,7 @@ def modificar_carreras(carrera_id):
             'data': {
                 'carrera_id': carrera_a_modificar.carrera_id,
                 'carrera': carrera_a_modificar.carrera,
+                'universidad_id': carrera_a_modificar.universidad_id,
                 'observaciones': carrera_a_modificar.observaciones,
                 'user_modif': carrera_a_modificar.user_modif,
             }
@@ -77,7 +79,7 @@ def modificar_carreras(carrera_id):
     except Exception as e:
         return jsonify({"error":"Error interno del servidor. Intente mas tarde"}),500
 
-@Carrera_bp.route('/<carrera_id>', methods=['DELETE'])
+@carrera_bp.route('/<carrera_id>', methods=['DELETE'])
 def eliminar_carrera(carrera_id):
     
     eliminar = Carrera.query.get(carrera_id)

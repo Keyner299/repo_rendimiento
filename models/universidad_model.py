@@ -1,4 +1,4 @@
-from app.extensiones import db
+from extensiones import db
 from sqlalchemy import TIMESTAMP
 import pendulum
 
@@ -6,12 +6,12 @@ class Universidad(db.Model):
 
     __tablename__ = "universidad"
 
-    universidad_id =  db.Column(db.String(50), primary_key=True)
+    universidad_id =  db.Column(db.Integer(), primary_key=True)
     universidad = db.Column(db.String(50), nullable=False, unique=True)
     observaciones = db.Column(db.String(200), nullable=True)
 
     def hora_argentina():
-        return pendulum.now('America/Argentina/Buenos_Aires')
+        return pendulum.now('America/Argentina/Buenos_Aires').replace(microsecond=0, tzinfo=None)
     
     fecha_modif = db.Column(TIMESTAMP(), 
                             nullable=False,

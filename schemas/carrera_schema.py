@@ -1,5 +1,5 @@
 from marshmallow import fields
-from app.extensiones import ma
+from extensiones import ma
 from models.carrera_model import Carrera
 
 class CarerraSchema(ma.SQLAlchemyAutoSchema):

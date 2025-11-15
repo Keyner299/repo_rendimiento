@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from schemas.universidad_schema import UniversidadSchema
-from app.extensiones import db
+from extensiones import db
 from models.universidad_model import Universidad
 
 universidad_bp=Blueprint(
