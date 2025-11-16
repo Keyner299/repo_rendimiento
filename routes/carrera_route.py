@@ -57,6 +57,7 @@ def modificar_carreras(carrera_id):
 
         carrera_a_modificar.carrera = data.get('carrera', carrera_a_modificar.carrera)
         carrera_a_modificar.universidad_id = data.get('universidad_id', carrera_a_modificar.universidad_id) 
+        carrera_a_modificar.modalidad_id = data.get('modalidad_id', carrera_a_modificar.modalidad_id) 
         carrera_a_modificar.duracion_anios = data.get('duracion_anios', carrera_a_modificar.duracion_anios)
         carrera_a_modificar.observaciones = data.get('observaciones', carrera_a_modificar.observaciones)
 
@@ -71,6 +72,7 @@ def modificar_carreras(carrera_id):
                 'carrera_id': carrera_a_modificar.carrera_id,
                 'carrera': carrera_a_modificar.carrera,
                 'universidad_id': carrera_a_modificar.universidad_id,
+                'modalidad_id': carrera_a_modificar.modalidad_id,
                 'observaciones': carrera_a_modificar.observaciones,
                 'user_modif': carrera_a_modificar.user_modif,
             }
@@ -95,6 +97,7 @@ def eliminar_carrera(carrera_id):
         return jsonify({"results":"Carrera eliminada"}),204
 
     except Exception as e:
+        db.session.rollback()
         print(f"Error al eliminar la carrera: {e}")
         return jsonify({"error":"Error interno del servidor. Intente mas tarde"}),500
 
