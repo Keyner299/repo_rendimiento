@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from extensiones import ma, db
 from routes.universidad_route import universidad_bp
 from routes.carrera_route import carrera_bp
+from routes.modalidad_route import modalidad_bp
 
 
 
@@ -22,6 +23,7 @@ def create_app():
     #registrar blueprints
     app.register_blueprint(universidad_bp,url_prefix='/api/v1/universidad')
     app.register_blueprint(carrera_bp,url_prefix='/api/v1/carrera')
+    app.register_blueprint(modalidad_bp,url_prefix='/api/v1/modalidad')
 
 
     return app
