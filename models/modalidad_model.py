@@ -3,6 +3,7 @@ from extensiones import db
 
 
 class Modalidad(db.Model):
+    #ejemplo de dato: presencial, virtual, mixta
 
     __tablename__ = "modalidad"
 
