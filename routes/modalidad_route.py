@@ -73,6 +73,7 @@ def modificar_modalidad(modalidad_id):
         return jsonify({"error":"Error interno del servidor. Intente mas tarde"}),500
 
 
+#ERROR AL ELIMINAR, eliminacion en cascada, modalidad tiene registro en tabla carrera
 @modalidad_bp.route('/<modalidad_id>', methods=['DELETE'])
 def eliminar_modalidad(modalidad_id):
     
