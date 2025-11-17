@@ -1,5 +1,21 @@
-# Ignorar directorios de cache de Python
+# Archivos de caché y compilados de Python
 __pycache__/
-
-# Ignorar archivos compilados de Python
 *.pyc
+*~$
+.ipynb_checkpoints
+
+# Entornos Virtuales (VENV)
+.venv/
+
+# Base de datos local (SQLite o similar)
+# Ignora la base de datos si la usas localmente para desarrollo
+# instance/
+*.db
+
+# Logs
+*.log
+
+# Archivos de sistema operativo y editores
+.DS_Store # macOS
+Thumbs.db # Windows
+.vscode/ # VS Code settings, si son específicos del usuario
