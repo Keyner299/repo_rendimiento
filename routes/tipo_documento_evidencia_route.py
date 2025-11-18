@@ -43,7 +43,7 @@ def ver_tipo_documento_evidencia():
     return jsonify({"results":lista}),200
 
 
-@tipo_documento_evidencia_bp.route('/tipo_documento_evidencia_id>', methods=['PUT'])
+@tipo_documento_evidencia_bp.route('/<tipo_documento_evidencia_id>', methods=['PUT'])
 def modificar_tipo_documento_evidencia(tipo_documento_evidencia_id):
     
     data = request.get_json()
@@ -74,7 +74,7 @@ def modificar_tipo_documento_evidencia(tipo_documento_evidencia_id):
     
 
 #OJO PUEDE TENER REGISTROS EN OTRA TABLA, CAUSA DE PROBLEMA PARA ELIMINAR
-@tipo_documento_evidencia_bp.route('/tipo_documento_evidencia_id>', methods=['DELETE'])
+@tipo_documento_evidencia_bp.route('/<tipo_documento_evidencia_id>', methods=['DELETE'])
 def eliminar_tipo_documento_evidencia(tipo_documento_evidencia_id):
 
     eliminar = TipoDocumentoEvidencia.query.get(tipo_documento_evidencia_id)
