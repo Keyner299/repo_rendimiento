@@ -8,15 +8,11 @@ from routes.tipo_materia_route import tipoMateria_bp
 from routes.regimen_route import regimen_bp
 from routes.cuatrimestre_route import cuatrimestre_bp
 from routes.estado_nota_route import estado_nota_bp
-<<<<<<< HEAD
-=======
 from routes.condicion_nota_route import condicion_nota_bp
 from routes.instancia_evaluacion_route import instancia_evaluacion_bp
 from routes.tipo_documento_evidencia_route import tipo_documento_evidencia_bp
 from routes.estado_validacion_route import estado_validacion_bp
 from routes.estado_academico_route import estado_academico_bp
->>>>>>> 58bcfc2 (feat: Migración y consolidación final de la estructura del proyecto a la raíz.)
-
 
 
 
@@ -41,15 +37,11 @@ def create_app():
     app.register_blueprint(regimen_bp,url_prefix='/api/v1/regimen')
     app.register_blueprint(cuatrimestre_bp,url_prefix='/api/v1/cuatrimestre')
     app.register_blueprint(estado_nota_bp,url_prefix='/api/v1/estado_nota')
-<<<<<<< HEAD
-
-=======
     app.register_blueprint(condicion_nota_bp,url_prefix='/api/v1/condicion_nota')
     app.register_blueprint(instancia_evaluacion_bp,url_prefix='/api/v1/instancia_evaluacion_bp')
     app.register_blueprint(tipo_documento_evidencia_bp,url_prefix='/api/v1/tipo_documento_evidencia_bp')
     app.register_blueprint(estado_validacion_bp,url_prefix='/api/v1/estado_validacion_bp')
     app.register_blueprint(estado_academico_bp,url_prefix='/api/v1/estado_academico_bp')
->>>>>>> 58bcfc2 (feat: Migración y consolidación final de la estructura del proyecto a la raíz.)
 
     return app
 
