@@ -26,7 +26,10 @@ class Carrera(db.Model):
                             onupdate=hora_argentina)
     user_modif = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, carrera, universidad_id, modalidad_id, duracion_anios, observaciones, user_modif):
+    def __init__(self, carrera, universidad_id, modalidad_id, duracion_anios, observaciones, user_modif, **kwargs):
+
+        super().__init__(**kwargs)
+
         self.carrera = carrera
         self.universidad_id = universidad_id
         self.modalidad_id = modalidad_id
