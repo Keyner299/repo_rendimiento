@@ -24,7 +24,13 @@ def create_app():
 
     app = Flask(__name__)
 
-    app.config.from_prefixed_env()
+    #app.config.from_prefixed_env()
+
+    import os
+    db_uri = os.getenv("SQLALCHEMY_DATABASE_URI")
+    
+    if db_uri:
+        app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 
     #Inicializar extenciones(importar)
     db.init_app(app)  #base de datos
